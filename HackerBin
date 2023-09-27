@@ -1,0 +1,172 @@
+/* ==UserStyle==
+@name           LAIN-Hacker
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    Dive into the Wired with a Lain-inspired hacker theme for kbin.social
+@author         arsg0etia
+==/UserStyle== */
+
+@-moz-document domain("kbin.social"), domain("karab.in"), domain("nadajnik.org"), domain("kopnij.in"), domain("fedia.io") {
+    
+    :root {
+        --kbin-color: #bf5ded;
+        --kbin-color-dark: #7f4a97;
+        --kbin-color-darker: #493353;
+        --pin-color: #4f9172;
+        --type-color: #e6cb83;
+        --subscribe-border: 1px dashed var(--kbin-color);
+        --font-family: 'Courier New', monospace;
+    }
+    
+    /* Wired Background */
+    
+    body {
+        background-color: #000;
+        color: #00ff00;
+        font-family: var(--font-family);
+    }
+    
+    /* Hacker Fonts */
+    
+    code, pre, #sidebar, #content {
+        font-family: var(--font-family);
+    }
+    
+    /* Green Text */
+    
+    a, a:visited {
+        color: #00ff00 !important;
+    }
+    
+    /* Matrix-like Links */
+    
+    a:hover {
+        text-decoration: underline;
+        color: #00ff00 !important;
+    }
+    
+    /* Code Blocks */
+    
+    pre {
+        background-color: #000;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        padding: 10px;
+        overflow: auto;
+        margin: 10px 0;
+    }
+    
+    /* Scrollbar for the Wired */
+    
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #4f9172;
+    }
+    
+    /* IMAGE PREVIEW STYLING */
+    
+    div.preview {
+        border: var(--kbin-section-border);
+        border-top: none;
+        background-color: var(--kbin-bg-nth);
+        max-width: 95%;
+        margin: -.5rem auto;
+        margin-bottom: initial;
+        padding: 0;
+    }
+    
+    div.preview img {
+        max-height: 75vh;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    /* SIDEBAR COMPACTIFICATION / GENERAL STYLING */
+    
+    #sidebar .info {
+        overflow: auto;
+    }
+    
+    /* --- Thread creator info --- */
+    
+    @media only screen and (min-width: 1360px), (max-width: 991.98px) {
+    
+        #sidebar .entry-info figure {
+            display: inline-block;
+            float: left;
+            padding-left: 1em;
+        }
+
+        #sidebar .entry-info li {
+            clear: none;
+            float: left;
+            width: 50%;
+        }
+
+        #sidebar .entry-info li {
+            border-top: var(--kbin-meta-border) !important;
+            border-bottom: none;
+        }
+
+        #sidebar .entry-info li:nth-child(n+3) {
+            border-bottom: var(--kbin-meta-border) !important;
+        }
+        
+    }
+    
+    #sidebar .info time, #sidebar .info span {
+        opacity: .75;
+    }
+    
+    /* --- Magazine info --- */
+    
+    #sidebar .magazine img:nth-child(1) {
+        max-height: 6em;
+        width: auto;
+    }
+    
+    #sidebar .magazine__subscribe button:hover, #sidebar .user__follow button:hover {
+        cursor: pointer;
+    }
+    
+    #sidebar .magazine__subscribe form[name="magazine_subscribe"] button:not(.active)/*, 
+    #sidebar .user__follow form[name="user_follow"] button:not(.active)*/ {
+        background-color: var(--kbin-color-darker);
+        border: var(--subscribe-border);
+    }
+    
+    #sidebar .magazine__subscribe form[name="magazine_subscribe"] button:not(.active):hover/*, 
+    #sidebar .user__follow form[name="user_follow"] button:not(.active):hover*/ {
+        background-color: var(--kbin-color-dark);
+    }
+    
+    /* COLORATIONS / MISC STYLING */
+    
+    article .fa-thumbtack {
+        color: var(--pin-color);
+    }
+    
+    #content article:has(footer menu li i.fa-thumbtack) {
+        border: 1px solid var(--pin-color) !important;
+    }
+    
+    article .fa-newspaper, article .fa-photo-film {
+        color: var(--type-color);
+    }
+    
+    .subject .show-preview {
+        padding: 8px;
+        border: var(--kbin-meta-border);
+    }
+    
+    .subject .show-preview:hover {
+        background-color: rgba(127,127,127,0.25);
+    }
+}
